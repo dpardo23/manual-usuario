@@ -1,0 +1,84 @@
+% main.tex
+% Estructura Principal - Manual de Usuario ISO/IEC/IEEE 26514:2022
+
+% Clase 'report' a dos caras (twoside) para encuadernación, tamaño A4, fuente base 11pt
+\documentclass[11pt, a4paper, twoside]{report} 
+
+% 1. Carga de configuraciones en orden lógico
+\input{config/01_packages}
+\input{config/03_fonts_colors}
+\input{config/02_layout}
+\input{config/04_macros}
+
+\begin{document}
+
+% ==========================================
+% PORTADA Y TÍTULO
+% ==========================================
+% (Aquí debes incluir tu archivo de portada con logo, versión y autoría)
+\include{sections/00_portada}
+
+
+% ==========================================
+% TABLA DE CONTENIDOS
+% ==========================================
+\clearpage
+\begingroup
+  % Neutralizamos el estilo 'plain' que LaTeX fuerza en el índice
+  \makeatletter
+  \let\ps@plain\ps@empty
+  \makeatother
+  
+  \pagestyle{empty} % Nos aseguramos de que no haya encabezados ni pies
+  \tableofcontents
+  \clearpage
+\endgroup
+
+% Reinicio de paginación para el contenido principal
+\pagestyle{fancy}    % Restauramos tu encabezado y pie de página corporativo
+\setcounter{page}{1} % La página 1 arranca oficialmente en la Introducción
+
+% Reinicio de paginación para el contenido principal
+\setcounter{page}{1}
+
+% ==========================================
+% INTRODUCCIÓN
+% ==========================================
+\chapter{Introducción}
+% Propósito del manual, audiencia objetivo y convenciones tipográficas.
+
+% ==========================================
+% INFORMACIÓN GENERAL DEL SISTEMA
+% ==========================================
+\chapter{Información General del Sistema}
+% Descripción funcional, requisitos de hardware/software e instalación.
+
+% ==========================================
+% INSTRUCCIONES PASO A PASO (NÚCLEO)
+% ==========================================
+\chapter{Instrucciones de Uso}
+% Procedimientos específicos, resultados esperados y apoyo visual.
+% Ejemplo de uso de macros:
+% \begin{AvisoPrecaucion} Guarde su trabajo antes de continuar. \end{AvisoPrecaucion}
+
+% ==========================================
+% RESOLUCIÓN DE PROBLEMAS (TROUBLESHOOTING)
+% ==========================================
+\chapter{Resolución de Problemas}
+% Tabla de síntomas, causas y soluciones.
+
+% ==========================================
+% GLOSARIO
+% ==========================================
+\chapter*{Glosario}
+\addcontentsline{toc}{chapter}{Glosario}
+% Definición de términos técnicos.
+
+% ==========================================
+% APÉNDICES Y REFERENCIAS
+% ==========================================
+\appendix
+\chapter{Información Complementaria y Soporte}
+% Canales de soporte técnico, referencias y anexos.
+
+\end{document}

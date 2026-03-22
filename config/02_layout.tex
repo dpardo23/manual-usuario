@@ -1,0 +1,60 @@
+% 02_layout.tex
+% Geometría, Encabezados, Títulos y Metadatos PDF
+
+% 1. Configuración de Márgenes Exactos (Corrección ISO Definitiva)
+\geometry{
+    a4paper,
+    inner=3cm,       % Margen izquierdo para encuadernación
+    outer=2cm,       % Margen derecho
+    top=2.5cm,       % Distancia exacta del borde superior de la hoja al ENCABEZADO
+    bottom=2.5cm,    % Distancia exacta del borde inferior de la hoja al PIE DE PÁGINA
+    includehead,     % Instrucción clave: El encabezado va DENTRO del margen de 2.5cm
+    includefoot,     % Instrucción clave: El pie de página va DENTRO del margen de 2.5cm
+    headheight=28pt, % Reserva espacio suficiente para el alto de tu logo
+    headsep=0.2cm,   % Separación estética entre la línea del encabezado y el texto
+    footskip=1.0cm   % Separación estética entre el final del texto y la línea del pie
+}
+\onehalfspacing      % Interlineado 1.5
+
+% 2. Jerarquía de Títulos (Especificaciones de Tipografía)
+% Títulos Principales (Capítulos): Helvetica, 18 pt, Negrita, Color Primario
+\titleformat{\chapter}[hang]
+  {\sffamily\bfseries\fontsize{18}{21.6}\selectfont\color{colorPrimario}}
+  {\thechapter.}
+  {1em}{}
+\titlespacing*{\chapter}{0pt}{-20pt}{20pt} % Ajuste de espaciado superior del capítulo
+
+% Subtítulos (Secciones): Helvetica, 14 pt, Negrita, Color Automático
+\titleformat{\section}[hang]
+  {\sffamily\bfseries\fontsize{14}{16.8}\selectfont}
+  {\thesection.}
+  {1em}{}
+
+% 3. Identidad Corporativa (Encabezado y Pie de Página - Ajuste ISO de Jerarquía)
+\pagestyle{fancy}
+\fancyhf{} 
+
+% Encabezado
+\fancyhead[L]{\includegraphics[height=0.5cm, keepaspectratio]{assets/img/bytebusters/logo_horizontal.png}}
+% Sans-serif (\sffamily), tamaño reducido (\footnotesize), color gris
+\fancyhead[R]{\sffamily\footnotesize\textcolor{colorPrimario}{\textbf{Sistema Gestor v3.2}}}
+
+% Pie de Página
+\fancyfoot[L]{\sffamily\footnotesize\textcolor{colorPrimario}{\today}}
+\fancyfoot[C]{\sffamily\footnotesize\textcolor{colorPrimario}{Página \thepage\ de \pageref{LastPage}}}
+\fancyfoot[R]{\sffamily\footnotesize\textcolor{colorPrimario}{soporte@bytebusters.com}}
+
+% Líneas separadoras más sutiles (gris en lugar de negro puro)
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{grisISO}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{grisISO}\leaders\hrule height \footrulewidth\hfill}}
+
+% 4. Configuración de Metadatos y Enlaces
+\hypersetup{
+    colorlinks=true,
+    linkcolor=colorPrimario,
+    urlcolor=colorPrimario,
+    pdftitle={Manual de Usuario - Estándar ISO/IEC/IEEE 26514},
+    pdfauthor={Byte Busters S.R.L.}
+}

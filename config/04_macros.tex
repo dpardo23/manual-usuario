@@ -1,0 +1,54 @@
+% 04_macros.tex
+% Componentes Especiales, Avisos y Formatos Personalizados
+
+% 1. Formato para Comandos y Rutas (Courier, 10pt)
+\newcommand{\comando}[1]{{\fontfamily{pcr}\fontsize{10}{12}\selectfont\texttt{#1}}}
+
+% 2. Formato para Resultados Esperados (Verde)
+\newcommand{\resultado}[1]{\textcolor{colorSecundario}{\textbf{#1}}}
+
+% 3. Componentes Especiales de Usabilidad (Estándar ISO)
+
+% Nota: Consejos de productividad (Fondo azul claro, icono info)
+\newtcolorbox{AvisoNota}{
+    colback=bgNota,
+    colframe=bgNota!80!black, % Borde ligeramente más oscuro
+    boxrule=0.5pt,
+    leftrule=4pt,
+    arc=2pt,
+    title={\faInfoCircle\ \textbf{Nota}},
+    coltitle=black,
+    fonttitle=\sffamily,
+    attach title to upper=\quad
+}
+
+% Precaución: Evitar errores operacionales (Borde amarillo, texto negrita, sin fondo invasivo)
+\newtcolorbox{AvisoPrecaucion}{
+    colback=white,
+    colframe=colorAcento,
+    boxrule=1.5pt,
+    arc=2pt,
+    fontupper=\bfseries,
+    title={\faExclamationTriangle\ \textbf{Precaución}},
+    coltitle=black,
+    fonttitle=\sffamily,
+    attach title to upper=\par
+}
+
+% Advertencia: Prevenir pérdida de datos (Fondo rojo suave, icono peligro)
+\newtcolorbox{AvisoAdvertencia}{
+    colback=bgAdvertencia,
+    colframe=red!70!black,
+    boxrule=0.5pt,
+    leftrule=4pt,
+    arc=2pt,
+    title={\faRadiation\ \textbf{Advertencia}},
+    coltitle=black,
+    fonttitle=\sffamily,
+    attach title to upper=\par
+}
+
+% 4. Formato de Checklists de Verificación
+% Utiliza cuadros de marcado estandarizados
+\newlist{checklist}{itemize}{1}
+\setlist[checklist]{label=$\square$, leftmargin=*}
